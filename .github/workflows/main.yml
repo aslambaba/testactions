@@ -1,0 +1,30 @@
+name: TestAction Workflow
+on:
+  push:
+    branches: [main]
+
+jobs:
+  GenerateBuilds:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Actions
+        uses: actions/checkout@v2
+        with:
+          node-version: 14.x
+      - name: Install Dep
+        run: npm install
+      - name: Build Project
+        run: npm run build
+      - name: Remove NodeModule
+        run: rm -r node_modules/
+      - name: Remove GitIgnore
+        run: rm .gitignore
+      - name: Check Files
+        run: ls -a
+      - name: Deploy Project on Build Branch
+        run: |
+          git config --global user.name github_workflow
+          git config --global user.email aslam91r@gmail.com
+          git remote set-url origin https://${{secrets.ACC_GIT}}@github.com/aslambaba/testactions.git
+          git commit -am 'Add Build Image'
+          git push origin build-files
