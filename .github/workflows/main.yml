@@ -44,7 +44,8 @@ jobs:
           git config --global user.name github_workflow
           git config --global user.email aslam91r@gmail.com
           git remote set-url origin https://${{secrets.ACC_GIT}}@github.com/aslambaba/testactions.git
-          git commit -am 'Add Build Image'
+          git add .
+          git commit -m 'Add Build Image'
         working-directory: ./Buildme/testactions/
       - name: Check files on build branch
         run: git branch && ls -a
