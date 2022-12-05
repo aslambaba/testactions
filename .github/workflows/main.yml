@@ -32,7 +32,7 @@ jobs:
         run: rm .gitignore
         working-directory: ./Buildme/testactions/
       - name: Check Files
-        run: git branch && ls -a
+        run: git branch && ls -a && cat .gitignore
         working-directory: ./Buildme/testactions/
       - name: Deploy Project on Build Branch
         run: |
