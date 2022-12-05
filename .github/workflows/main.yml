@@ -44,3 +44,6 @@ jobs:
       - name: Check files on build branch
         run: git branch && ls
         working-directory: ./Buildme/testactions/
+      - name: Push to Build Branch
+        run: git push origin build-files
+        working-directory: ./Buildme/testactions/
