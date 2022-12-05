@@ -12,26 +12,35 @@ jobs:
         with:
           node-version: 14.x
       - name: Create Folder
-        run: mkdir Buildme
+        run: mkdir Buildme 
+      - name: Clone Files  
+        run: git clone https://github.com/aslambaba/testactions.git
+        working-directory: ./Buildme
       - name: Install Dep
-        run: cd Buildme/
-      - name: j
-        run: ls -a
-      # - name: Build Project
-      #   run: npm run build
-      # - name: Remove NodeModule
-      #   run: rm -r node_modules/
-      # - name: Remove GitIgnore
-      #   run: rm .gitignore
-      # - name: Check Files
-      #   run: git branch && ls -a
-      # - name: Deploy Project on Build Branch
-      #   run: |
-      #     git config --global user.name github_workflow
-      #     git config --global user.email aslam91r@gmail.com
-      #     git remote set-url origin https://${{secrets.ACC_GIT}}@github.com/aslambaba/testactions.git
-      #     git commit -am 'Add Build Image'
-      # - name: GitBranch Status
-      #   run: git checkout build-files && git checkout main *
-      # - name: Check files on build branch
-      #   run: git branch && ls -a
+        run: cd testactions && npm install
+        working-directory: ./Buildme/testactions/
+      - name: Build Project
+        run: npm run build
+        working-directory: ./Buildme/testactions/
+      - name: Remove NodeModule
+        run: rm -r node_modules/
+        working-directory: ./Buildme/testactions/
+      - name: Remove GitIgnore
+        run: rm .gitignore
+        working-directory: ./Buildme/testactions/
+      - name: Check Files
+        run: git branch && ls -a
+        working-directory: ./Buildme/testactions/
+      - name: Deploy Project on Build Branch
+        run: |
+          git config --global user.name github_workflow
+          git config --global user.email aslam91r@gmail.com
+          git remote set-url origin https://${{secrets.ACC_GIT}}@github.com/aslambaba/testactions.git
+          git commit -am 'Add Build Image'
+        working-directory: ./Buildme/testactions/
+      - name: GitBranch Status
+        run: git checkout build-files && git checkout main *
+        working-directory: ./Buildme/testactions/
+      - name: Check files on build branch
+        run: git branch && ls
+        working-directory: ./Buildme/testactions/
