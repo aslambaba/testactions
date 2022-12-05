@@ -27,4 +27,3 @@ jobs:
           git config --global user.email aslam91r@gmail.com
           git remote set-url origin https://${{secrets.ACC_GIT}}@github.com/aslambaba/testactions.git
           git commit -am 'Add Build Image'
-          git push
