@@ -33,9 +33,8 @@ jobs:
       - name: Build Project
         run: npm run build
         working-directory: ./Buildme/testactions/
-      - name: Remove NodeModule & Other Files
-        run: shopt extglob 
-        # run: rm -rv !("build")
+      - name: Remove NodeModule
+        run: rm -r node_modules/
         working-directory: ./Buildme/testactions/
       - name: Deploy Project on Build Branch
         run: |
