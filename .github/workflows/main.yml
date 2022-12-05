@@ -16,6 +16,9 @@ jobs:
       - name: Clone Files  
         run: git clone https://github.com/aslambaba/testactions.git
         working-directory: ./Buildme
+      - name: GitBranch Status
+        run: git checkout build-files && git checkout main *
+        working-directory: ./Buildme/testactions/
       - name: Install Dep
         run: npm install
         working-directory: ./Buildme/testactions/
@@ -37,9 +40,6 @@ jobs:
           git config --global user.email aslam91r@gmail.com
           git remote set-url origin https://${{secrets.ACC_GIT}}@github.com/aslambaba/testactions.git
           git commit -am 'Add Build Image'
-        working-directory: ./Buildme/testactions/
-      - name: GitBranch Status
-        run: git checkout build-files && git checkout main *
         working-directory: ./Buildme/testactions/
       - name: Check files on build branch
         run: git branch && ls
