@@ -17,7 +17,7 @@ jobs:
         run: git clone https://github.com/aslambaba/testactions.git
         working-directory: ./Buildme
       - name: GitBranch Status
-        run: git checkout build-files && git checkout main *
+        run: git checkout build-files && rm -r * && git checkout main *
         working-directory: ./Buildme/testactions/
       - name: Install Dep
         run: npm install
