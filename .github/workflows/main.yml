@@ -11,8 +11,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           node-version: 14.x
+      - name: Create Folder and Clone
+        run: mkdir Buildme && cd Buildme && git clone https://github.com/aslambaba/testactions.git
       - name: Install Dep
-        run: npm install
+        run: cd testactions && npm install
       - name: Build Project
         run: npm run build
       - name: Remove NodeModule
@@ -20,13 +22,14 @@ jobs:
       - name: Remove GitIgnore
         run: rm .gitignore
       - name: Check Files
-        run: ls -a
-      - name: GitBranch Status
-        run: git branch && git checkout -b buildfies2
+        run: git branch && ls -a
       - name: Deploy Project on Build Branch
         run: |
           git config --global user.name github_workflow
           git config --global user.email aslam91r@gmail.com
           git remote set-url origin https://${{secrets.ACC_GIT}}@github.com/aslambaba/testactions.git
           git commit -am 'Add Build Image'
-          git push origin buildfiles2
+      - name: GitBranch Status
+        run: git checkout build-files && git checkout main *
+      - name: Check files on build branch
+        run: git branch && ls -a
