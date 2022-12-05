@@ -19,6 +19,14 @@ jobs:
       - name: GitBranch Status
         run: git checkout build-files && rm -r * && git checkout main *
         working-directory: ./Buildme/testactions/
+      - name: Remove GitIgnore File
+        run: |
+          rm .gitignore
+          git config --global user.name github_workflow
+          git config --global user.email aslam91r@gmail.com
+          git remote set-url origin https://${{secrets.ACC_GIT}}@github.com/aslambaba/testactions.git
+          git commit -am 'Remove GitIgnore File'
+        working-directory: ./Buildme/testactions/
       - name: Install Dep
         run: npm install
         working-directory: ./Buildme/testactions/
@@ -28,9 +36,6 @@ jobs:
       - name: Remove NodeModule
         run: rm -r node_modules/
         working-directory: ./Buildme/testactions/
-      - name: Remove GitIgnore
-        run: rm .gitignore
-        working-directory: ./Buildme/testactions/
       - name: Check Files
         run: git branch && ls -a
         working-directory: ./Buildme/testactions/
@@ -39,7 +44,8 @@ jobs:
           git config --global user.name github_workflow
           git config --global user.email aslam91r@gmail.com
           git remote set-url origin https://${{secrets.ACC_GIT}}@github.com/aslambaba/testactions.git
-          git commit -am 'Add Build Image'
+          git add .
+          git commit -m 'Add Build Image'
         working-directory: ./Buildme/testactions/
       - name: Check files on build branch
         run: git branch && ls -a
