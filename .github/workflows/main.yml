@@ -18,6 +18,7 @@ jobs:
         working-directory: ./Buildme
       - name: GitBranch Status
         run: git checkout build-files && rm -r * && git checkout main *
+        working-directory: ./Buildme/testactions/
       - name: Remove GitIgnore File
         run: |
           rm .gitignore
