@@ -33,11 +33,9 @@ jobs:
       - name: Build Project
         run: npm run build
         working-directory: ./Buildme/testactions/
-      - name: Remove NodeModule
-        run: rm -r node_modules/
+      - name: Remove NodeModule & Other Files
+        run: rm -r !("build")
         working-directory: ./Buildme/testactions/
-      - name: Check Files
-        run: git branch && ls -a
         working-directory: ./Buildme/testactions/
       - name: Deploy Project on Build Branch
         run: |
