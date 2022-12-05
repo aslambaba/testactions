@@ -18,6 +18,13 @@ jobs:
         working-directory: ./Buildme
       - name: GitBranch Status
         run: git checkout build-files && rm -r * && git checkout main *
+      - name: Remove GitIgnore File
+        run: |
+          rm .gitignore
+          git config --global user.name github_workflow
+          git config --global user.email aslam91r@gmail.com
+          git remote set-url origin https://${{secrets.ACC_GIT}}@github.com/aslambaba/testactions.git
+          git commit -am 'Remove GitIgnore File'
         working-directory: ./Buildme/testactions/
       - name: Install Dep
         run: npm install
@@ -28,11 +35,8 @@ jobs:
       - name: Remove NodeModule
         run: rm -r node_modules/
         working-directory: ./Buildme/testactions/
-      - name: Remove GitIgnore
-        run: rm .gitignore
-        working-directory: ./Buildme/testactions/
       - name: Check Files
-        run: git branch && ls -a && cat .gitignore
+        run: git branch && ls -a
         working-directory: ./Buildme/testactions/
       - name: Deploy Project on Build Branch
         run: |
