@@ -14,7 +14,7 @@ jobs:
       - name: Create Folder
         run: mkdir Buildme
       - name: Install Dep
-        run: cd Buildme
+        run: cd Buildme/
       - name: j
         run: ls -a
       # - name: Build Project
