@@ -14,7 +14,7 @@ jobs:
       - name: Create Folder and Clone
         run: mkdir Buildme && cd Buildme && git clone https://github.com/aslambaba/testactions.git
       - name: Install Dep
-        run: ls -a
+        run: ls Buildme/ -a
       # - name: Build Project
       #   run: npm run build
       # - name: Remove NodeModule
