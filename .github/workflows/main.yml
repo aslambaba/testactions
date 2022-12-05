@@ -17,7 +17,7 @@ jobs:
         run: git clone https://github.com/aslambaba/testactions.git
         working-directory: ./Buildme
       - name: Install Dep
-        run: cd testactions && npm install
+        run: npm install
         working-directory: ./Buildme/testactions/
       - name: Build Project
         run: npm run build
