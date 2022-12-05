@@ -21,6 +21,8 @@ jobs:
         run: rm .gitignore
       - name: Check Files
         run: ls -a
+      - name: GitBranch Status
+        run: git branch && git checkout build-files && git branch
       - name: Deploy Project on Build Branch
         run: |
           git config --global user.name github_workflow
