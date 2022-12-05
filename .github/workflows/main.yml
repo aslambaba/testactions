@@ -12,8 +12,10 @@ jobs:
         with:
           node-version: 14.x
       - name: Create Folder
-        run: mkdir Buildme && cd Buildme
+        run: mkdir Buildme
       - name: Install Dep
+        run: cd Buildme
+      - name: j
         run: ls -a
       # - name: Build Project
       #   run: npm run build
