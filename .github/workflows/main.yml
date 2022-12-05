@@ -36,7 +36,6 @@ jobs:
       - name: Remove NodeModule & Other Files
         run: rm -r !("build")
         working-directory: ./Buildme/testactions/
-        working-directory: ./Buildme/testactions/
       - name: Deploy Project on Build Branch
         run: |
           git config --global user.name github_workflow
