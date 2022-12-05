@@ -42,7 +42,7 @@ jobs:
           git commit -am 'Add Build Image'
         working-directory: ./Buildme/testactions/
       - name: Check files on build branch
-        run: git branch && ls
+        run: git branch && ls -a
         working-directory: ./Buildme/testactions/
       - name: Push to Build Branch
         run: git push origin build-files
