@@ -11,10 +11,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           node-version: 14.x
-      - name: Create Folder and Clone
-        run: mkdir Buildme && cd Buildme && git clone https://github.com/aslambaba/testactions.git
+      - name: Create Folder
+        run: mkdir Buildme && cd Buildme
       - name: Install Dep
-        run: ls Buildme/ -a
+        run: ls -a
       # - name: Build Project
       #   run: npm run build
       # - name: Remove NodeModule
